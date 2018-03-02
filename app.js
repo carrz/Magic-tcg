@@ -19,3 +19,15 @@ function facebookLogin() {
       console.log("Error > " + error);
   });
 }
+
+function onLoadFile() {
+  var storage = firebase.storage();
+  var storageRef = firebase.storage().ref();
+
+  var file = document.getElementById('uploadBtn').files[0];
+  var thisRef = storageRef.child('NewFiles/' + file.name);
+
+  thisRef.put(file).then(function(snapshot) {
+    console.log('Uploaded a blob or file!');
+  })
+}
